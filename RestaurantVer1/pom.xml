@@ -20,7 +20,7 @@
             <artifactId>ojdbc7</artifactId>
             <version>12.1.0.2</version>
             <scope>system</scope>
-            <systemPath>C:/Users/Conno/Documents/GitHub/Restaurant/ojdbc7-12.1.0.2.jar</systemPath> <!-- must match file name -->
+            <systemPath>${basedir}/../ojdbc7-12.1.0.2.jar</systemPath> <!-- must match file name -->
         </dependency>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
@@ -71,6 +71,18 @@
             <artifactId>junit-jupiter</artifactId>
             <version>RELEASE</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.minidev</groupId>
+            <artifactId>json-smart</artifactId>
+            <version>2.4.7</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.12.3</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

@@ -26,15 +26,15 @@ public class RestTable {
     @OneToMany(mappedBy = "restTable")
     private List<Order> orders = new ArrayList<>(10);
     @OneToMany(mappedBy = "restTable")
-    private List<Reservation> reservations = new ArrayList<>(10);
+    private List<Reservation> reservations;
     public RestTable(String tableName, int capacity) {
         this.tableName = tableName;
         this.capacity = capacity;
         this.occupied = false;
     }
 
-    public RestTable() {
-
+    protected RestTable() {
+        reservations = new ArrayList<>(10);
     }
 
     //for relation table

@@ -1,6 +1,5 @@
 package com.connorli.restaurant.Dao;
 
-import RestaurantApplication.domain.*;
 import com.connorli.restaurant.domain.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;

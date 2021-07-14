@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface MenuItemRepository extends CrudRepository<MenuItem, Integer> {
     Optional<MenuItem> findByMenuItemID(Integer menuItemID);
-    Optional<MenuItem> findByMenuItemNameLike(String menuItemName);
+    Optional<MenuItem> findByMenuItemName(String menuItemName);
 
 }

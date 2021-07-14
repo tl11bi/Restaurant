@@ -47,10 +47,10 @@ public class Order {
         this.restTable = restTable;
         employee.addOrder(this);
         restTable.addOrder(this);
-        menuItems = new ArrayList<>(10);
+        new Order();
     }
 
-    public Order() {
+    protected Order() {
         menuItems = new ArrayList<>(10);
     }
 

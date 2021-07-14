@@ -1,6 +1,5 @@
 package com.connorli.restaurant.Dao;
 
-import RestaurantApplication.domain.*;
 import com.connorli.restaurant.domain.Employee;
 import com.connorli.restaurant.domain.EmployeeType;
 import org.junit.jupiter.api.AfterEach;

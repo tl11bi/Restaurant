@@ -6,12 +6,13 @@ import com.connorli.RestaurantVer2.repo.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class EmployeeService {
+    private EmployeeRepository employeeRepository;
+
     @Autowired
     public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
-    private EmployeeRepository employeeRepository;
 
     public Employee createEmployee(String firstName, String lastName, EmployeeType employeeType){
         return employeeRepository.findByFirstNameAndLastName(firstName, lastName)

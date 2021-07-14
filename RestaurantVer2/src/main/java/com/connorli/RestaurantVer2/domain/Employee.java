@@ -36,17 +36,17 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private EmployeeType employeeType;
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    private List<Order> orders = new ArrayList<>(10);
+    private List<Order> orders;
 
-    public Employee() {
+    protected Employee() {
+        this.orders = new ArrayList<>(10);
     }
-
 
     public Employee(String firstName, String lastName, EmployeeType employeeType) {
         this.firstName = firstName;
         this.lastName = lastName;
-
         this.employeeType = employeeType;
+        new Employee();
     }
 
 

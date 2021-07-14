@@ -39,7 +39,7 @@ public class Reservation {
     @JoinColumn(name = "TABLE_ID")
     private RestTable restTable;
 
-    public Reservation() {
+    protected Reservation() {
     }
 
     public Reservation(String firstName, String lastName, Date time, int numberOfPeople, RestTable restTable) {

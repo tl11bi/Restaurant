@@ -30,7 +30,7 @@ public class MenuItem {
     @Column(name = "MENU_ITEM_PRICE")
     private BigDecimal price;
     @ManyToMany(mappedBy = "menuItems", fetch=FetchType.LAZY)
-    private List<Order> orders = new ArrayList<>(10);
+    private List<Order> orders;
 
     public MenuItem(String menuItemName, BigDecimal price) {
         this.menuItemName = menuItemName;
@@ -38,7 +38,9 @@ public class MenuItem {
     }
 
 
-    public MenuItem() {
+    protected MenuItem() {
+
+        this.orders  = new ArrayList<>(10);
     }
 
     //for relation table
