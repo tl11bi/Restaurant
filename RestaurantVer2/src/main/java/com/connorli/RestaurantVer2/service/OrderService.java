@@ -1,10 +1,14 @@
 package com.connorli.RestaurantVer2.service;
 
+import com.connorli.RestaurantVer2.domain.Employee;
 import com.connorli.RestaurantVer2.domain.MenuItem;
+import com.connorli.RestaurantVer2.domain.Order;
+import com.connorli.RestaurantVer2.domain.RestTable;
 import com.connorli.RestaurantVer2.repo.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class OrderService {
     private OrderRepository orderRepository;
@@ -15,13 +19,14 @@ public class OrderService {
     }
 
 
-    public MenuItem createMenuItem(String menuItemName, BigDecimal price){
-        return orderRepository.findByMenuItemName(menuItemName).orElse(orderRepository.save(new MenuItem(menuItemName, price)));
+    public Order createOrder(Employee employee, RestTable restTable, Date time){
+        return orderRepository.findOrderByEmployeeAndRestTableAndTime(employee, restTable, time)
+                .orElse(orderRepository.save(new Order(employee, restTable, time)));
     }
 
-    public Iterable<MenuItem> lookup(){return menuItemRepository.findAll();}
+    public Iterable<Order> lookup(){return orderRepository.findAll();}
 
     public long total() {
-        return menuItemRepository.count();
+        return orderRepository.count();
     }
 }

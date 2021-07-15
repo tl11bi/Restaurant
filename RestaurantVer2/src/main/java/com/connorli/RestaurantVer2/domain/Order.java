@@ -2,10 +2,7 @@ package com.connorli.RestaurantVer2.domain;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +24,9 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_id_gen")
     @SequenceGenerator(name = "order_id_gen", sequenceName = "order_seq", allocationSize = 1)
     private Integer orderID;
+    @Column(name = "ORDER_TIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date time;
     @ManyToOne
     @JoinColumn(name = "EMP_ID", nullable = false)
     private Employee employee;
@@ -42,9 +42,10 @@ public class Order {
     )
     private List<MenuItem> menuItems;
 
-    public Order(Employee employee, RestTable restTable) {
+    public Order(Employee employee, RestTable restTable, Date time) {
         this.employee = employee;
         this.restTable = restTable;
+        this.time = time;
         employee.addOrder(this);
         restTable.addOrder(this);
         new Order();
