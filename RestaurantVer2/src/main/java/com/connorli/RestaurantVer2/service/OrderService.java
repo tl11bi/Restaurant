@@ -25,7 +25,11 @@ public class OrderService {
                 .orElse(orderRepository.save(new Order(employee, restTable, time)));
     }
 
+    public void saveOrder(Order order){
+        orderRepository.save(order);
+    }
     public Iterable<Order> lookup(){return orderRepository.findAll();}
+
 
     public long total() {
         return orderRepository.count();
