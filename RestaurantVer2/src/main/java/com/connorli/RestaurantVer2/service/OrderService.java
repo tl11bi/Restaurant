@@ -6,10 +6,11 @@ import com.connorli.RestaurantVer2.domain.Order;
 import com.connorli.RestaurantVer2.domain.RestTable;
 import com.connorli.RestaurantVer2.repo.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
+@Service
 public class OrderService {
     private OrderRepository orderRepository;
 

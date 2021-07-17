@@ -6,9 +6,10 @@ import com.connorli.RestaurantVer2.domain.Reservation;
 import com.connorli.RestaurantVer2.domain.RestTable;
 import com.connorli.RestaurantVer2.repo.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
-
+@Service
 public class ReservationService {
 
     private ReservationRepository reservationRepository;

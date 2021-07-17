@@ -4,7 +4,11 @@ import com.connorli.RestaurantVer2.domain.Employee;
 import com.connorli.RestaurantVer2.domain.EmployeeType;
 import com.connorli.RestaurantVer2.repo.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@Service
 public class EmployeeService {
     private EmployeeRepository employeeRepository;
 
@@ -22,5 +26,9 @@ public class EmployeeService {
     public Iterable<Employee> lookup(){return employeeRepository.findAll();}
     public long total(){
         return employeeRepository.count();
+    }
+
+    public List<Employee> getEmployeeByType(EmployeeType employeeType){
+        return employeeRepository.findByEmployeeType(employeeType);
     }
 }

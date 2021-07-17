@@ -108,12 +108,12 @@ public class RestTable {
         if (this == o) return true;
         if (!(o instanceof RestTable)) return false;
         RestTable restTable = (RestTable) o;
-        return tableID == restTable.tableID && capacity == restTable.capacity && occupied == restTable.occupied && tableName.equals(restTable.tableName);
+        return capacity == restTable.capacity && tableID.equals(restTable.tableID) && tableName.equals(restTable.tableName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tableID, tableName, capacity, occupied);
+        return Objects.hash(tableID, tableName, capacity);
     }
 }
 
