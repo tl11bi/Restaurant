@@ -45,7 +45,7 @@ public class RestaurantDataGenerator {
         for(int i = 0; i < 10; i++){
             try{orders.add(new Order(servers.get(random.nextInt(servers.size())),
                     restTables.get(random.nextInt(restTables.size())), Timestamp.valueOf("2020-09-20 15:20:05")));}
-            catch (ArrayIndexOutOfBoundsException E){
+            catch (NullPointerException E){
                 System.out.println();
             }
         }

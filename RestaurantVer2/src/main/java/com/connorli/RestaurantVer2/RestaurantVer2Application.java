@@ -1,6 +1,8 @@
 package com.connorli.RestaurantVer2;
 
+import com.connorli.RestaurantVer2.GenData.RestaurantDataGenerator;
 import com.connorli.RestaurantVer2.domain.*;
+import com.connorli.RestaurantVer2.repo.*;
 import com.connorli.RestaurantVer2.service.*;
 import javafx.scene.control.RadioMenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +38,54 @@ public class RestaurantVer2Application implements CommandLineRunner {
     private RestTableService restTableService;
 
 
+    @Autowired
+    EmployeeRepository employeeRepository;
+    @Autowired
+    MenuItemRepository menuItemRepository;
+    @Autowired
+    OrderRepository orderRepository;
+    @Autowired
+    ReservationRepository reservationRepository;
+    @Autowired
+    RestTableRepository restTableRepository;
+
     @Override
     public void run(String... args) throws Exception {
+        createNewItems();
     }
 
-    private void createNewItems
+    private void createNewItems(){
+        RestaurantDataGenerator restaurantDataGenerator = new RestaurantDataGenerator();
+        List<Employee> employees = restaurantDataGenerator.getEmployees();
+        List<MenuItem> menuItems = restaurantDataGenerator.getMenuItems();
+        List<Reservation> reservations = restaurantDataGenerator.getReservations();
+        List<RestTable> restTables = restaurantDataGenerator.getRestTables();
+        List<Order> orders = restaurantDataGenerator.getOrders();
+
+        for (Employee employee:
+             employees) {
+            employeeRepository.save(employee);
+        }
+        for (MenuItem menuItem:
+             menuItems) {
+            menuItemRepository.save(menuItem);
+        }
+
+        for (Reservation reservation:
+        reservations){
+           reservationRepository.save(reservation);
+        }
+
+        for (RestTable restTable:
+             restTables) {
+            restTableRepository.save(restTable);
+        }
+
+        for (Order order:
+             orders) {
+            orderRepository.save(order);
+        }
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(RestaurantVer2Application.class, args);
