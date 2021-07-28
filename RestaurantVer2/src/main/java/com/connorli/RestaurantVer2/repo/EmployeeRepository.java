@@ -10,7 +10,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
 
-public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
+public interface EmployeeRepository extends CrudRepository<Employee, Long> {
     Optional<Employee> findByFirstNameAndLastName(String firstName, String lastName);
     Optional<Employee> findByEmployeeID(Integer employeeID);
     List<Employee> findByEmployeeType(EmployeeType employeeType);

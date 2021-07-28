@@ -25,7 +25,7 @@ public class Reservation {
     @Column(name = "RESERVATION_ID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "reservation_id_gen")
     @SequenceGenerator(name = "reservation_id_gen", sequenceName = "reservation_seq", allocationSize = 1)
-    private Integer reservationID;
+    private long reservationID;
     @Column(name = "RESERVATION_FIRST_NAME")
     private String firstName;
     @Column(name = "RESERVATION_LAST_NAME")

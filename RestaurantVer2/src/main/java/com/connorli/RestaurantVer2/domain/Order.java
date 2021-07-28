@@ -23,7 +23,7 @@ public class Order {
     @Column(name = "ORDER_ID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_id_gen")
     @SequenceGenerator(name = "order_id_gen", sequenceName = "order_seq", allocationSize = 1)
-    private Integer orderID;
+    private long orderID;
     @Column(name = "ORDER_TIME")
     @Temporal(TemporalType.TIMESTAMP)
     private Date time;

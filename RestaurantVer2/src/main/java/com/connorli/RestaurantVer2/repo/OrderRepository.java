@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Date;
 import java.util.Optional;
 
-public interface OrderRepository extends CrudRepository<Order, Integer> {
+public interface OrderRepository extends CrudRepository<Order, Long> {
     Optional<Order> findOrderByEmployeeAndRestTableAndTime(Employee employee, RestTable restTable, Date time);
 }

@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Date;
 import java.util.Optional;
 
-public interface ReservationRepository extends CrudRepository<Reservation, Integer> {
+public interface ReservationRepository extends CrudRepository<Reservation, Long> {
     Optional<Reservation> findByFirstNameAndLastNameAndTime(String firstName, String lastName, Date time);
 }

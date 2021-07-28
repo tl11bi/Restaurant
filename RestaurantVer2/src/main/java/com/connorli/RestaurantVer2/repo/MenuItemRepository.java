@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface MenuItemRepository extends CrudRepository<MenuItem, Integer> {
+public interface MenuItemRepository extends CrudRepository<MenuItem, Long> {
     Optional<MenuItem> findByMenuItemID(Integer menuItemID);
     Optional<MenuItem> findByMenuItemName(String menuItemName);
     List<MenuItem> findAll();

@@ -1,11 +1,6 @@
-package com.connorli.restaurant.JasonProduceData;
+package com.connorli.restaurant.GenData;
 
 import com.connorli.restaurant.domain.*;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import net.minidev.json.JSONObject;
-
-import java.io.File;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -25,8 +20,8 @@ public class RestaurantDataGenerator {
     final static int serverSize = 3;
     final static int menuItemSize = 9;
     final static int tableSize = 9;
-    public RestaurantDataGenerator(){
 
+    public RestaurantDataGenerator(){
         Random random = new Random(seed);
         employees.addAll(Arrays.asList(new Employee("Admin", numbers.get(0), EmployeeType.Administrator),
                 new Employee("Manager", numbers.get(0), EmployeeType.Manager),
@@ -49,8 +44,8 @@ public class RestaurantDataGenerator {
         List<Employee> servers = employees.stream().filter(a->a.getType()==EmployeeType.Server).collect(Collectors.toList());
         for(int i = 0; i < 10; i++){
             try{orders.add(new Order(servers.get(random.nextInt(servers.size())),
-                    restTables.get(random.nextInt(restTables.size()))));}
-            catch (ArrayIndexOutOfBoundsException E){
+                    restTables.get(random.nextInt(restTables.size())), Timestamp.valueOf("2020-09-20 15:20:05")));}
+            catch (NullPointerException E){
                 System.out.println();
             }
         }
@@ -64,12 +59,27 @@ public class RestaurantDataGenerator {
         new Reservation("resFirst3", "resLast3", Timestamp.valueOf("2020-10-21 16:20:05"),8, restTables.get(random.nextInt(restTables.size())))
         );
 
+    }
 
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public List<RestTable> getRestTables() {
+        return restTables;
+    }
+
+    public List<MenuItem> getMenuItems() {
+        return menuItems;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
     }
 
 
-
-    public static void main(String[] args) {
-        RestaurantDataGenerator restaurantDataGenerator  = new RestaurantDataGenerator();
-    }
 }

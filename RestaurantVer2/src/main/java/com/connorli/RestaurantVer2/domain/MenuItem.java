@@ -24,7 +24,7 @@ public class MenuItem {
     @Column(name = "MENU_ITEM_ID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "menu_id_gen")
     @SequenceGenerator(name = "menu_id_gen", sequenceName = "menu_seq", allocationSize = 1)
-    private Integer menuItemID;
+    private long menuItemID;
     @Column(name = "MENU_ITEM_NAME")
     private String menuItemName;
     @Column(name = "MENU_ITEM_PRICE")
