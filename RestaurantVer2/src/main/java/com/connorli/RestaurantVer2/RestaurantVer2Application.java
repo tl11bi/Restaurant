@@ -4,7 +4,6 @@ import com.connorli.RestaurantVer2.GenData.RestaurantDataGenerator;
 import com.connorli.RestaurantVer2.domain.*;
 import com.connorli.RestaurantVer2.repo.*;
 import com.connorli.RestaurantVer2.service.*;
-import javafx.scene.control.RadioMenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
