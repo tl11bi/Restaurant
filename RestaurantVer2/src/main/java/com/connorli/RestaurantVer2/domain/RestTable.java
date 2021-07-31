@@ -13,8 +13,8 @@ import java.util.Objects;
 public class RestTable {
     @Id
     @Column(name = "TABLE_ID")
+    @SequenceGenerator(name="rest_table_id_gen", initialValue = 400, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rest_table_id_gen")
-    @SequenceGenerator(name="rest_table_id_gen", sequenceName="rest_table_seq", allocationSize = 1)
     private long tableID;
 
     @Column(name = "TABLE_NAME")

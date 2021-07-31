@@ -23,8 +23,8 @@ import javax.persistence.TemporalType;
 public class Reservation {
     @Id
     @Column(name = "RESERVATION_ID")
+    @SequenceGenerator(name = "reservation_id_gen", initialValue = 2000, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "reservation_id_gen")
-    @SequenceGenerator(name = "reservation_id_gen", sequenceName = "reservation_seq", allocationSize = 1)
     private long reservationID;
     @Column(name = "RESERVATION_FIRST_NAME")
     private String firstName;

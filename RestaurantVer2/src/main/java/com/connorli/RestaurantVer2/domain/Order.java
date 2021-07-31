@@ -21,8 +21,8 @@ import javax.persistence.Table;
 public class Order {
     @Id
     @Column(name = "ORDER_ID")
+    @SequenceGenerator(name = "order_id_gen", initialValue = 1000, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_id_gen")
-    @SequenceGenerator(name = "order_id_gen", sequenceName = "order_seq", allocationSize = 1)
     private long orderID;
     @Column(name = "ORDER_TIME")
     @Temporal(TemporalType.TIMESTAMP)

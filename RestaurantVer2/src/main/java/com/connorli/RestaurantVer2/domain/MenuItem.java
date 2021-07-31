@@ -22,8 +22,8 @@ import javax.persistence.SequenceGenerator;
 public class MenuItem {
     @Id
     @Column(name = "MENU_ITEM_ID")
+    @SequenceGenerator(name = "menu_id_gen", initialValue = 200, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "menu_id_gen")
-    @SequenceGenerator(name = "menu_id_gen", sequenceName = "menu_seq", allocationSize = 1)
     private long menuItemID;
     @Column(name = "MENU_ITEM_NAME")
     private String menuItemName;
