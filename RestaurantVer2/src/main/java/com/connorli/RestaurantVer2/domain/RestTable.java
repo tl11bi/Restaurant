@@ -1,5 +1,7 @@
 package com.connorli.RestaurantVer2.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,6 @@ public class RestTable {
     @SequenceGenerator(name="rest_table_id_gen", initialValue = 400, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rest_table_id_gen")
     private long tableID;
-
     @Column(name = "TABLE_NAME")
     private String tableName;
     @Column(name = "TABLE_CAPACITY")
@@ -24,13 +25,16 @@ public class RestTable {
     @Column(name = "TABLE_OCCUPIED")
     private boolean occupied;
     @OneToMany(mappedBy = "restTable")
+    @JsonManagedReference
     private List<Order> orders = new ArrayList<>(10);
     @OneToMany(mappedBy = "restTable")
+    @JsonManagedReference
     private List<Reservation> reservations;
     public RestTable(String tableName, int capacity) {
         this.tableName = tableName;
         this.capacity = capacity;
         this.occupied = false;
+        new RestTable();
     }
 
     protected RestTable() {
@@ -69,13 +73,7 @@ public class RestTable {
         this.tableName = tableName;
     }
 
-    public List<Order> getOrders() {
-        return orders;
-    }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
 
     public int getCapacity() {
         return capacity;
@@ -91,6 +89,18 @@ public class RestTable {
 
     public void setOccupied(boolean occupied) {
         this.occupied = occupied;
+    }
+
+    public void setTableID(long tableID) {
+        this.tableID = tableID;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
     }
 
     @Override

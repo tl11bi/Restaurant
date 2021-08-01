@@ -17,12 +17,13 @@ public class RestTableService {
     }
 
     public RestTable createRestTable(String tableName, int capacity){
-        return restTableRepository.getRestTableByTableName(tableName).orElse(new RestTable(tableName, capacity));
+        return restTableRepository.getRestTableByTableName(tableName).orElse(restTableRepository.save(new RestTable(tableName, capacity)));
     }
 
     public Iterable<RestTable> lookup(){return restTableRepository.findAll();}
 
-    public List<RestTable> getAll(){return restTableRepository.findAll();}
+    public List<RestTable> getTables(){return restTableRepository.findAll();}
+
 
     public long total(){return restTableRepository.count();}
 

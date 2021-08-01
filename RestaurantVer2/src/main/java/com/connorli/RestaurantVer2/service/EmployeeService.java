@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class EmployeeService {
@@ -24,11 +26,15 @@ public class EmployeeService {
     }
 
     public Iterable<Employee> lookup(){return employeeRepository.findAll();}
+
     public long total(){
         return employeeRepository.count();
     }
 
-    public List<Employee> getEmployeeByType(EmployeeType employeeType){
+    public List<Employee> getEmployees(){
+        return employeeRepository.findAll();
+    }
+    public List<Employee> getEmployeesByType(EmployeeType employeeType){
         return employeeRepository.findByEmployeeType(employeeType);
     }
 }

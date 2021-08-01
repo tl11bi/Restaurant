@@ -15,8 +15,9 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "employees", path = "employees")
 public interface EmployeeRepository extends CrudRepository<Employee, Long> {
     Optional<Employee> findByFirstNameAndLastName(String firstName, String lastName);
-    Optional<Employee> findByEmployeeID(Integer employeeID);
+    Optional<Employee> findByEmployeeID(Long employeeID);
     List<Employee> findByEmployeeType(EmployeeType employeeType);
+    List<Employee> findAll();
 }
 
 

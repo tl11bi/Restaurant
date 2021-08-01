@@ -1,5 +1,7 @@
 package com.connorli.RestaurantVer2.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,7 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private EmployeeType employeeType;
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Order> orders;
 
 
@@ -62,6 +65,12 @@ public class Employee {
 
 
     //PROPERTY METHODS
+
+
+    public void setEmployeeID(long employeeID) {
+        this.employeeID = employeeID;
+    }
+
     public String getFirstName() {
         return firstName;
     }
