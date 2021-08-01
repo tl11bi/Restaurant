@@ -1,5 +1,7 @@
 package com.connorli.RestaurantVer2.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.*;
@@ -28,9 +30,11 @@ public class Order {
     private Date time;
     @ManyToOne
     @JoinColumn(name = "EMP_ID", nullable = false)
+    @JsonBackReference
     private Employee employee;
     @ManyToOne
     @JoinColumn(name = "TABLE_ID", nullable = false)
+    @JsonBackReference
     private RestTable restTable;
     @OneToMany(mappedBy="order")
     private Set<OrderMenuItem> orderMenuItems;

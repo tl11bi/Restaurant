@@ -1,5 +1,7 @@
 package com.connorli.RestaurantVer2.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -22,9 +24,11 @@ public class OrderMenuItem {
     private long orderMenuItemID;
     @ManyToOne
     @JoinColumn(name="ORDER_ID")
+    @JsonBackReference
     private Order order;
     @ManyToOne
     @JoinColumn(name = "MENU_ITEM_ID")
+    @JsonBackReference
     private MenuItem menuItem;
 
     public OrderMenuItem(Order order, MenuItem menuItem) {

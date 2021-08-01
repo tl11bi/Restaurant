@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @RestController
-@RequestMapping(path = "/ordermenuitem")
+@RequestMapping(path = "/orderMenuItems")
 public class OrderMenuItemController {
     private OrderMenuItemRepository orderMenuItemRepository;
     private OrderRepository orderRepository;

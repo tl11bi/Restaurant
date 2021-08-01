@@ -1,5 +1,7 @@
 package com.connorli.RestaurantVer2.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.persistence.Table;
 import java.math.BigDecimal;
@@ -17,6 +19,10 @@ import javax.persistence.SequenceGenerator;
 @Entity(name = "REST_MENU_ITEM")
 @Table(name = "REST_MENU_ITEM")
 public class MenuItem {
+    public void setMenuItemID(long menuItemID) {
+        this.menuItemID = menuItemID;
+    }
+
     @Id
     @Column(name = "MENU_ITEM_ID")
     @SequenceGenerator(name = "menu_id_gen", initialValue = 200, allocationSize = 1)
@@ -27,6 +33,7 @@ public class MenuItem {
     @Column(name = "MENU_ITEM_PRICE")
     private BigDecimal price;
     @OneToMany(mappedBy="menuItem")
+    @JsonManagedReference
     private Set<OrderMenuItem> orderMenuItems;
 
 

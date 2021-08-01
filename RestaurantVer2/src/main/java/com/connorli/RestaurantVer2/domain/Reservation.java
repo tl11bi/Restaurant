@@ -1,5 +1,7 @@
 package com.connorli.RestaurantVer2.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
@@ -37,6 +39,7 @@ public class Reservation {
     private int numberOfPeople;
     @ManyToOne
     @JoinColumn(name = "TABLE_ID")
+    @JsonBackReference
     private RestTable restTable;
 
     protected Reservation() {
@@ -96,6 +99,9 @@ public class Reservation {
         this.restTable = restTable;
     }
 
+    public void setReservationID(long reservationID) {
+        this.reservationID = reservationID;
+    }
 
     @Override
     public String toString() {
