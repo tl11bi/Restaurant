@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+
 @Service
 public class ReservationService {
 
@@ -26,6 +28,9 @@ public class ReservationService {
 
     public Iterable<Reservation> lookup(){return reservationRepository.findAll();}
 
+    public List<Reservation> getReservations(){
+        return reservationRepository.findAll();
+    }
     public long total() {
         return reservationRepository.count();
     }

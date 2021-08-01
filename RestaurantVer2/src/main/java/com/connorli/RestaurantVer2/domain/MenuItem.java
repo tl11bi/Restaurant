@@ -3,15 +3,12 @@ package com.connorli.RestaurantVer2.domain;
 import javax.persistence.*;
 import javax.persistence.Table;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 
 @NamedQueries({
@@ -29,27 +26,29 @@ public class MenuItem {
     private String menuItemName;
     @Column(name = "MENU_ITEM_PRICE")
     private BigDecimal price;
-    @ManyToMany(mappedBy = "menuItems", fetch=FetchType.LAZY)
-    private List<Order> orders;
+    @OneToMany(mappedBy="menuItem")
+    private Set<OrderMenuItem> orderMenuItems;
+
 
     public MenuItem(String menuItemName, BigDecimal price) {
         this.menuItemName = menuItemName;
         this.price = price;
+        new MenuItem();
     }
 
 
     protected MenuItem() {
 
-        this.orders  = new ArrayList<>(10);
+        this.orderMenuItems = new HashSet<>(10);
     }
 
     //for relation table
-    protected void addOrder(Order order){
-        orders.add(order);
+    protected void addOrder(OrderMenuItem orderMenuItems){
+        this.orderMenuItems.add(orderMenuItems);
     }
 
     protected void removeOrder(Order order){
-        orders.remove(order);
+        orderMenuItems.remove(order);
     }
 
     //property methods

@@ -31,6 +31,7 @@ public class RestTable {
         this.tableName = tableName;
         this.capacity = capacity;
         this.occupied = false;
+        new RestTable();
     }
 
     protected RestTable() {

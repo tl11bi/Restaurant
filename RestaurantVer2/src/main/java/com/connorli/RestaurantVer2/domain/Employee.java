@@ -62,6 +62,12 @@ public class Employee {
 
 
     //PROPERTY METHODS
+
+
+    public void setEmployeeID(long employeeID) {
+        this.employeeID = employeeID;
+    }
+
     public String getFirstName() {
         return firstName;
     }

@@ -48,7 +48,6 @@ public class Reservation {
         this.lastName = lastName;
         this.numberOfPeople = numberOfPeople;
         this.restTable = restTable;
-        restTable.addReservation(this);
     }
 
 

@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -33,37 +32,29 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "TABLE_ID", nullable = false)
     private RestTable restTable;
-    @ManyToMany(cascade = { CascadeType.DETACH }, fetch=FetchType.EAGER)
-    @JoinTable(name = "REST_ORDER_MENU_ITEM",
-            joinColumns =
-            @JoinColumn(name = "ORDER_ID"),
-            inverseJoinColumns =
-            @JoinColumn(name = "MENU_ITEM_ID")
-    )
-    private List<MenuItem> menuItems;
+    @OneToMany(mappedBy="order")
+    private Set<OrderMenuItem> orderMenuItems;
 
     public Order(Employee employee, RestTable restTable, Date time) {
         this.employee = employee;
         this.restTable = restTable;
         this.time = time;
-        employee.addOrder(this);
-        restTable.addOrder(this);
         new Order();
     }
 
     protected Order() {
-        menuItems = new ArrayList<>(10);
+        orderMenuItems = new HashSet<>(10);
     }
 
 
     //relation table method
-    public void addOrderItem(MenuItem... menuItems) {
-        this.menuItems.addAll(Arrays.asList(menuItems));
+    public void addOrderItem(OrderMenuItem... orderMenuItems) {
+        this.orderMenuItems.addAll(Arrays.asList(orderMenuItems));
     }
 
 
     public void removeOrderItem(int index) {
-        menuItems.remove(index);
+        this.orderMenuItems.remove(index);
     }
     //property method
 
@@ -75,7 +66,9 @@ public class Order {
         return orderID;
     }
 
-
+    public void setOrderID(long orderID) {
+        this.orderID = orderID;
+    }
 
     public Employee getEmployee() {
         return employee;
@@ -93,12 +86,12 @@ public class Order {
         this.restTable = restTable;
     }
 
-    public List<MenuItem> getMenuItems() {
-        return menuItems;
+    public Set<OrderMenuItem> getMenuItems() {
+        return orderMenuItems;
     }
 
-    public void setMenuItems(List<MenuItem> menuItems) {
-        this.menuItems = menuItems;
+    public void setMenuItems(Set<OrderMenuItem> orderMenuItems) {
+        this.orderMenuItems = orderMenuItems;
     }
 
 
@@ -108,7 +101,6 @@ public class Order {
                 "orderID=" + orderID +
                 ", employee=" + employee +
                 ", restTable=" + restTable +
-                ", menuItems=" + menuItems +
                 '}';
     }
 

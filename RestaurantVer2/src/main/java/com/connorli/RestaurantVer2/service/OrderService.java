@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
+
 @Service
 public class OrderService {
     private OrderRepository orderRepository;
@@ -29,7 +31,9 @@ public class OrderService {
         orderRepository.save(order);
     }
     public Iterable<Order> lookup(){return orderRepository.findAll();}
-
+    public List<Order> getOrders(){
+        return orderRepository.findAll();
+    }
 
     public long total() {
         return orderRepository.count();
